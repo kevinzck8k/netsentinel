@@ -1,0 +1,58 @@
+# =============================================================================
+# Telco Multi-Agent AIOps Platform — Containerlab Topology
+# 2-node FRRouting eBGP lab for fault injection & automated RCA demos
+# Deploy:  sudo containerlab deploy -t topology.clab.yml
+# Destroy: sudo containerlab destroy -t topology.clab.yml --cleanup
+# =============================================================================
+name: telco-aiops
+
+mgmt:
+  network: telco-aiops-mgmt
+  ipv4-subnet: 172.20.20.0/24
+
+topology:
+  kinds:
+    linux:
+      image: frrouting/frr:v8.5.4
+
+  nodes:
+    # ------------------------------------------------------------------
+    # R1 — AS 65001  (loopback 10.0.0.1/32, peering 192.168.12.1)
+    # ------------------------------------------------------------------
+    r1:
+      kind: linux
+      image: frrouting/frr:v8.5.4
+      binds:
+        - configs/r1/daemons:/etc/frr/daemons
+        - configs/r1/frr.conf:/etc/frr/frr.conf
+        - configs/r1/vtysh.conf:/etc/frr/vtysh.conf
+      exec:
+        - sysctl -w net.ipv4.ip_forward=1
+        - sysctl -w net.ipv6.conf.all.forwarding=1
+        - ip addr add 10.0.0.1/32 dev lo
+        - ip addr add 192.168.12.1/30 dev eth1
+        - /usr/lib/frr/frrinit.sh start
+      env:
+        CLAB_INTFS: "1"
+
+    # ------------------------------------------------------------------
+    # R2 — AS 65002  (loopback 10.0.0.2/32, peering 192.168.12.2)
+    # ------------------------------------------------------------------
+    r2:
+      kind: linux
+      image: frrouting/frr:v8.5.4
+      binds:
+        - configs/r2/daemons:/etc/frr/daemons
+        - configs/r2/frr.conf:/etc/frr/frr.conf
+        - configs/r2/vtysh.conf:/etc/frr/vtysh.conf
+      exec:
+        - sysctl -w net.ipv4.ip_forward=1
+        - sysctl -w net.ipv6.conf.all.forwarding=1
+        - ip addr add 10.0.0.2/32 dev lo
+        - ip addr add 192.168.12.2/30 dev eth1
+        - /usr/lib/frr/frrinit.sh start
+      env:
+        CLAB_INTFS: "1"
+
+  links:
+    - endpoints: ["r1:eth1", "r2:eth1"]

@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-09-15T00:44:45.524599+00:00",
+  "provenance": {
+    "note": "DeepSeek ablation run (258 cases, deepseek-flash, thinking disabled). Restored from the run console output after an offline regression run overwrote ablation_latest.json; per-case detail was not persisted by that version of run_ablation.",
+    "model": "deepseek-flash",
+    "thinking": false,
+    "structured_method": "function_calling",
+    "workers": 8,
+    "sample": 258
+  },
+  "literature": {
+    "rule_only": "Drain/regex taxonomy (Loghub-style classical baseline)",
+    "single_agent": "CoT syslog\u2192RCA, no tools (Flow-of-Action CoT control)",
+    "rag_only": "syslog + SOP RAG, no CLI (TeleOps LLM-RAG)",
+    "multi_agent": "Triage + event-aware CLI + hybrid RAG + RCA"
+  },
+  "rule_only": {
+    "accuracy": 0.8953,
+    "mean_score": 0.9273,
+    "passed": 231,
+    "total": 258,
+    "field_accuracy": {
+      "event_type": 0.8953,
+      "severity": 0.9186,
+      "nodes": 1.0
+    },
+    "category_accuracy": {
+      "historical_bgp_anomaly": 1.0,
+      "loghub_adapted": 1.0,
+      "paraphrased_hard": 0.0,
+      "synthetic_telco": 1.0
+    },
+    "llm_calls": {
+      "ok": 0,
+      "failed": 0
+    },
+    "mean_latency_ms": 0.6
+  },
+  "single_agent": {
+    "accuracy": 0.0,
+    "mean_score": 0.7157,
+    "passed": 0,
+    "total": 258,
+    "field_accuracy": {
+      "event_type": 0.8953,
+      "severity": 0.9186,
+      "nodes": 1.0,
+      "rag_documents": 0.0,
+      "rca_contract": 1.0,
+      "rca_keywords": 1.0,
+      "telemetry_evidence": 0.0
+    },
+    "category_accuracy": {
+      "historical_bgp_anomaly": 0.0,
+      "loghub_adapted": 0.0,
+      "paraphrased_hard": 0.0,
+      "synthetic_telco": 0.0
+    },
+    "llm_calls": {
+      "ok": 257,
+      "failed": 1
+    },
+    "mean_latency_ms": 4104.3
+  },
+  "rag_only": {
+    "accuracy": 0.8953,
+    "mean_score": 0.8657,
+    "passed": 231,
+    "total": 258,
+    "field_accuracy": {
+      "event_type": 0.8953,
+      "severity": 0.9186,
+      "nodes": 1.0,
+      "rag_documents": 1.0,
+      "rca_contract": 1.0,
+      "rca_keywords": 1.0,
+      "telemetry_evidence": 0.0
+    },
+    "category_accuracy": {
+      "historical_bgp_anomaly": 1.0,
+      "loghub_adapted": 1.0,
+      "paraphrased_hard": 0.0,
+      "synthetic_telco": 1.0
+    },
+    "llm_calls": {
+      "ok": 258,
+      "failed": 0
+    },
+    "mean_latency_ms": 4577.1
+  },
+  "multi_agent": {
+    "accuracy": 0.9767,
+    "mean_score": 0.9919,
+    "passed": 252,
+    "total": 258,
+    "field_accuracy": {
+      "event_type": 0.9767,
+      "severity": 0.9767,
+      "nodes": 1.0,
+      "rag_documents": 1.0,
+      "rca_contract": 1.0,
+      "rca_keywords": 1.0,
+      "telemetry_evidence": 1.0
+    },
+    "category_accuracy": {
+      "historical_bgp_anomaly": 0.75,
+      "loghub_adapted": 1.0,
+      "paraphrased_hard": 0.963,
+      "synthetic_telco": 1.0
+    },
+    "llm_calls": {
+      "ok": 1016,
+      "failed": 0
+    },
+    "mean_latency_ms": 30821.3
+  },
+  "delta_vs_rag_only": {
+    "accuracy": 0.0814,
+    "mean_score": 0.1262
+  },
+  "delta_vs_single_agent": {
+    "accuracy": 0.9767,
+    "mean_score": 0.2762
+  }
+}

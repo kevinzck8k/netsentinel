@@ -1,0 +1,118 @@
+[
+  {
+    "event": "BCNET_regular",
+    "source": "SFU CNL / RIPE rrc04 feature CSV",
+    "rows": 1440,
+    "anomalous_rows": 0,
+    "regular_rows": 1440,
+    "avg_announcements_on_anomaly": 0.0,
+    "avg_withdrawals_on_anomaly": 0.0,
+    "max_announcements_on_anomaly": 0.0,
+    "max_withdrawals_on_anomaly": 0.0
+  },
+  {
+    "event": "Code_Red_I",
+    "source": "SFU CNL / RIPE rrc04 feature CSV",
+    "rows": 7200,
+    "anomalous_rows": 600,
+    "regular_rows": 6600,
+    "avg_announcements_on_anomaly": 213.66,
+    "avg_withdrawals_on_anomaly": 7.55,
+    "max_announcements_on_anomaly": 1005.0,
+    "max_withdrawals_on_anomaly": 45.0,
+    "date": "2001-07",
+    "type": "worm_induced_bgp_anomaly",
+    "summary": "Code Red I IIS worm; BGP anomaly labels cover attack day ±2 days.",
+    "remediation": [
+      "IIS hardening / patching",
+      "Separate security incident ticket from pure L3 link RCA"
+    ]
+  },
+  {
+    "event": "Moscow_blackout",
+    "source": "SFU CNL / RIPE rrc04 feature CSV",
+    "rows": 7200,
+    "anomalous_rows": 240,
+    "regular_rows": 6960,
+    "avg_announcements_on_anomaly": 2131.47,
+    "avg_withdrawals_on_anomaly": 9.91,
+    "max_announcements_on_anomaly": 12087.0,
+    "max_withdrawals_on_anomaly": 23.0,
+    "date": "2005-05",
+    "type": "power_blackout_ix_disconnect",
+    "summary": "Moscow energy ring blackout disconnected MSK-IX; BGP sessions and traffic exchange failed for hours.",
+    "remediation": [
+      "Treat as multi-peer facility outage, not single-link fault",
+      "Fail over to alternate IX / transit",
+      "After power restore, verify BGP Established and prefix baselines"
+    ]
+  },
+  {
+    "event": "Nimda",
+    "source": "SFU CNL / RIPE rrc04 feature CSV",
+    "rows": 8609,
+    "anomalous_rows": 1301,
+    "regular_rows": 7308,
+    "avg_announcements_on_anomaly": 252.06,
+    "avg_withdrawals_on_anomaly": 7.42,
+    "max_announcements_on_anomaly": 24122.0,
+    "max_withdrawals_on_anomaly": 510.0,
+    "date": "2001-09",
+    "type": "worm_induced_bgp_anomaly",
+    "summary": "Nimda worm exploited IIS; RIPE BGP collectors recorded multi-day anomalous routing dynamics.",
+    "remediation": [
+      "Contain web-server malware fan-out",
+      "Monitor AS-path length / edit-distance spikes",
+      "Document as worm-correlated routing noise in RCA"
+    ]
+  },
+  {
+    "event": "RIPE_regular",
+    "source": "SFU CNL / RIPE rrc04 feature CSV",
+    "rows": 7196,
+    "anomalous_rows": 0,
+    "regular_rows": 7196,
+    "avg_announcements_on_anomaly": 0.0,
+    "avg_withdrawals_on_anomaly": 0.0,
+    "max_announcements_on_anomaly": 0.0,
+    "max_withdrawals_on_anomaly": 0.0
+  },
+  {
+    "event": "Slammer",
+    "source": "SFU CNL / RIPE rrc04 feature CSV",
+    "rows": 7200,
+    "anomalous_rows": 869,
+    "regular_rows": 6331,
+    "avg_announcements_on_anomaly": 329.67,
+    "avg_withdrawals_on_anomaly": 6.58,
+    "max_announcements_on_anomaly": 1376.0,
+    "max_withdrawals_on_anomaly": 9.0,
+    "date": "2003-01",
+    "type": "worm_induced_bgp_anomaly",
+    "summary": "SQL Slammer worm doubled infections ~every 9s; BGP feature vectors show anomalous withdrawal/announcement patterns.",
+    "remediation": [
+      "Patch/filter SQL Server UDP/1434 scanning",
+      "Watch for secondary BGP hold-timer expiry under load",
+      "Use historical baselines to avoid false-positive peer shutdowns"
+    ]
+  },
+  {
+    "event": "WannaCrypt",
+    "source": "SFU CNL / RIPE rrc04 feature CSV",
+    "rows": 11520,
+    "anomalous_rows": 5760,
+    "regular_rows": 5760,
+    "avg_announcements_on_anomaly": 926.06,
+    "avg_withdrawals_on_anomaly": 48.91,
+    "max_announcements_on_anomaly": 13820.0,
+    "max_withdrawals_on_anomaly": 178.0,
+    "date": "2017-05",
+    "type": "ransomware_worm_bgp_churn",
+    "summary": "WannaCry ransomware/worm caused large BGP update churn (announcements/withdrawals spike) visible at RIPE rrc04.",
+    "remediation": [
+      "Isolate infected Windows hosts (EternalBlue/SMB)",
+      "Rate-limit BGP UPDATE storms at edge if control-plane CPU high",
+      "Correlate RIPE RIS / peering dashboards for AS-path instability"
+    ]
+  }
+]

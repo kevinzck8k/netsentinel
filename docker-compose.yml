@@ -1,0 +1,43 @@
+# =============================================================================
+# Infrastructure dependencies for Telco Multi-Agent AIOps Platform
+# Redis Streams (message bus) + Qdrant (vector DB)
+# =============================================================================
+services:
+  redis:
+    image: redis:7.2-alpine
+    container_name: telco-aiops-redis
+    ports:
+      - "6379:6379"
+    command: >
+      redis-server
+      --appendonly yes
+      --stream-node-max-entries 1000
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:v1.18.0
+    container_name: telco-aiops-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    environment:
+      QDRANT__SERVICE__GRPC_PORT: 6334
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/6333'"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  qdrant_data:

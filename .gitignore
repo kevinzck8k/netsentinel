@@ -1,0 +1,43 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Env & secrets
+.env
+*.pem
+
+# Personal working notes, not part of the project
+RESUME_PROJECT.md
+
+# Lab runtime artifacts
+lab/checkpoints.sqlite
+lab/checkpoints.sqlite-*
+lab/reports/
+clab-telco-aiops/
+*.log
+
+# Mutable eval outputs. The provider-tagged ablation archives under
+# lab/eval_reports/ are committed evidence and must survive a local
+# offline regression run.
+lab/eval_reports/ablation_latest.json
+lab/eval_reports/ablation_offline_*.json
+lab/eval_reports/latest.json
+
+# Datasets — keep processed/eval; ignore bulky raw/extracted
+datasets/raw/
+datasets/extracted/
+!datasets/README.md
+!datasets/processed/
+!datasets/eval/
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# Distribution
+dist/
+build/

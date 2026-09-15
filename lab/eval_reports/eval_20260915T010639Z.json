@@ -1,0 +1,1745 @@
+{
+  "generated_at": "2026-09-15T01:06:39.448230+00:00",
+  "mode": "full",
+  "golden_path": "datasets/eval/golden_cases.jsonl",
+  "total": 20,
+  "passed": 17,
+  "failed": 3,
+  "accuracy": 0.85,
+  "mean_score": 0.9475,
+  "field_accuracy": {
+    "event_type": 0.85,
+    "severity": 0.85,
+    "nodes": 1.0,
+    "rag_documents": 1.0,
+    "rca_contract": 1.0,
+    "rca_keywords": 1.0,
+    "telemetry_evidence": 1.0
+  },
+  "category_accuracy": {
+    "historical_bgp_anomaly": 0.85
+  },
+  "llm_calls": {
+    "ok": 80,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "case_id": "bgp-hist-code_red_i",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 278,
+            "remediation_steps": 8
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "session",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp",
+            "session"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/3"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.72,
+      "root_cause_preview": "eBGP session on pe1 to neighbor 192.168.12.2 (AS 65002) is Idle because the underlying interface eth1 (192.168.12.1/30) ",
+      "error": null,
+      "elapsed_ms": 12115.3
+    },
+    {
+      "case_id": "bgp-hist-moscow_blackout",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 289,
+            "remediation_steps": 6
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "session",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp",
+            "session"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/3"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.72,
+      "root_cause_preview": "BGP session to neighbor 192.168.12.2 (AS 65002) on pe1 is down in Idle state with 0 messages received/sent, caused by th",
+      "error": null,
+      "elapsed_ms": 9465.5
+    },
+    {
+      "case_id": "bgp-hist-nimda",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 302,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "session",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp",
+            "session"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/3"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.82,
+      "root_cause_preview": "Interface eth1 on pe1 is DOWN (192.168.12.1/30), which has torn down the eBGP session to neighbor 192.168.12.2 (AS 65002",
+      "error": null,
+      "elapsed_ms": 12134.0
+    },
+    {
+      "case_id": "bgp-hist-slammer",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 455,
+            "remediation_steps": 6
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "session",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp",
+            "session"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/3"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.72,
+      "root_cause_preview": "eBGP session between pe1 (AS 65001, router-id 10.0.0.1) and neighbor 192.168.12.2 (AS 65002) is down in Idle state with ",
+      "error": null,
+      "elapsed_ms": 11497.9
+    },
+    {
+      "case_id": "bgp-hist-wannacrypt",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 292,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "session",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp",
+            "session"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/3"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.82,
+      "root_cause_preview": "BGP session to neighbor 192.168.12.2 (AS 65002) on pe1 is down in Idle state with 0 messages received/sent, caused by th",
+      "error": null,
+      "elapsed_ms": 10556.6
+    },
+    {
+      "case_id": "bgp-hist-youtube-hijack-2008",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "route_withdrawal",
+          "actual": "route_withdrawal",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "warning",
+          "actual": "warning",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 392,
+            "remediation_steps": 6
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "prefix",
+            "withdraw"
+          ],
+          "actual": [
+            "prefix",
+            "withdraw"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "route_withdrawal",
+      "predicted_severity": "warning",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.55,
+      "root_cause_preview": "BGP session to peer 192.168.12.2 (AS65002) on pe1 is Idle with interface eth1 DOWN, so the eBGP peering is not Establish",
+      "error": null,
+      "elapsed_ms": 10015.1
+    },
+    {
+      "case_id": "bgp-hist-as9121-leak",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "route_withdrawal",
+          "actual": "route_withdrawal",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "warning",
+          "actual": "warning",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe2"
+          ],
+          "actual": [
+            "pe2"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 340,
+            "remediation_steps": 8
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "prefix",
+            "withdraw"
+          ],
+          "actual": [
+            "prefix",
+            "withdraw"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "route_withdrawal",
+      "predicted_severity": "warning",
+      "predicted_nodes": [
+        "pe2"
+      ],
+      "confidence_score": 0.55,
+      "root_cause_preview": "BGP session to peer 192.168.12.2 (AS65002) on pe2 is Idle with 0 prefixes received, and the underlying interface eth1 (1",
+      "error": null,
+      "elapsed_ms": 11610.4
+    },
+    {
+      "case_id": "bgp-hist-code_red_ii",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 486,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.82,
+      "root_cause_preview": "eBGP session to neighbor 192.168.12.2 (AS 65002) on pe1 is Idle because the underlying interface eth1 (192.168.12.1/30) ",
+      "error": null,
+      "elapsed_ms": 11628.9
+    },
+    {
+      "case_id": "bgp-hist-blaster",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 367,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "session",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp",
+            "session"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/3"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.82,
+      "root_cause_preview": "Interface eth1 on pe1 is DOWN (local address 192.168.12.1/30), which has torn down the eBGP session to neighbor 192.168.",
+      "error": null,
+      "elapsed_ms": 11158.2
+    },
+    {
+      "case_id": "bgp-hist-malaysia-leak-2015",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe2"
+          ],
+          "actual": [
+            "pe2"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 636,
+            "remediation_steps": 8
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe2"
+      ],
+      "confidence_score": 0.68,
+      "root_cause_preview": "eBGP session between pe2 (local AS 65001) and neighbor 192.168.12.2 (AS 65002) is down — the session is stuck in Idle wi",
+      "error": null,
+      "elapsed_ms": 11240.4
+    },
+    {
+      "case_id": "bgp-hist-as7007-1997",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "route_withdrawal",
+          "actual": "route_withdrawal",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "warning",
+          "actual": "warning",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 517,
+            "remediation_steps": 8
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "prefix",
+            "withdraw"
+          ],
+          "actual": [
+            "prefix",
+            "withdraw"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "route_withdrawal",
+      "predicted_severity": "warning",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.72,
+      "root_cause_preview": "BGP session to neighbor 192.168.12.2 (AS65002) on pe1 is Idle with 0 prefixes received, because the underlying interface",
+      "error": null,
+      "elapsed_ms": 10113.4
+    },
+    {
+      "case_id": "bgp-hist-china-telecom-2010",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe2"
+          ],
+          "actual": [
+            "pe2"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 496,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe2"
+      ],
+      "confidence_score": 0.78,
+      "root_cause_preview": "BGP session between pe2 (local AS 65001, router-id 10.0.0.1) and neighbor 192.168.12.2 (AS 65002) is down — the neighbor",
+      "error": null,
+      "elapsed_ms": 10461.8
+    },
+    {
+      "case_id": "bgp-hist-indosat-2014",
+      "category": "historical_bgp_anomaly",
+      "passed": false,
+      "score": 0.65,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "route_withdrawal",
+          "correct": false,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "warning",
+          "correct": false,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 474,
+            "remediation_steps": 6
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "route_withdrawal",
+      "predicted_severity": "warning",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.72,
+      "root_cause_preview": "eBGP session between pe1 (local AS 65001) and neighbor 192.168.12.2 (AS 65002) is Idle because the underlying interface ",
+      "error": null,
+      "elapsed_ms": 10045.2
+    },
+    {
+      "case_id": "bgp-hist-mainone-2018",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe2"
+          ],
+          "actual": [
+            "pe2"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 480,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe2"
+      ],
+      "confidence_score": 0.72,
+      "root_cause_preview": "eBGP session on pe2 to neighbor 192.168.12.2 (AS 65002) is Idle because the underlying interface eth1 (192.168.12.1/30) ",
+      "error": null,
+      "elapsed_ms": 10675.4
+    },
+    {
+      "case_id": "bgp-hist-route53-2018",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "route_withdrawal",
+          "actual": "route_withdrawal",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "warning",
+          "actual": "warning",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 325,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "prefix",
+            "withdraw"
+          ],
+          "actual": [
+            "prefix",
+            "withdraw"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "route_withdrawal",
+      "predicted_severity": "warning",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.72,
+      "root_cause_preview": "eBGP session between pe1 (AS65001) and neighbor 192.168.12.2 (AS65002) is Idle because interface eth1 (192.168.12.1/30) ",
+      "error": null,
+      "elapsed_ms": 9862.1
+    },
+    {
+      "case_id": "bgp-hist-cloudflare-verizon-2019",
+      "category": "historical_bgp_anomaly",
+      "passed": false,
+      "score": 0.65,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "route_withdrawal",
+          "correct": false,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "warning",
+          "correct": false,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe2"
+          ],
+          "actual": [
+            "pe2"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 417,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "route_withdrawal",
+      "predicted_severity": "warning",
+      "predicted_nodes": [
+        "pe2"
+      ],
+      "confidence_score": 0.72,
+      "root_cause_preview": "BGP session between pe2 (local AS 65001) and neighbor 192.168.12.2 (AS 65002) is down — the neighbor is in Idle state wi",
+      "error": null,
+      "elapsed_ms": 10104.6
+    },
+    {
+      "case_id": "bgp-hist-rostelecom-2020",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 429,
+            "remediation_steps": 6
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.78,
+      "root_cause_preview": "eBGP session to neighbor 192.168.12.2 (AS65002) on pe1 is stuck in Idle with zero messages exchanged, because the underl",
+      "error": null,
+      "elapsed_ms": 10257.7
+    },
+    {
+      "case_id": "bgp-hist-facebook-2021",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "route_withdrawal",
+          "actual": "route_withdrawal",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "warning",
+          "actual": "warning",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe2"
+          ],
+          "actual": [
+            "pe2"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 337,
+            "remediation_steps": 6
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "prefix",
+            "withdraw"
+          ],
+          "actual": [
+            "prefix",
+            "withdraw"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 2/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "route_withdrawal",
+      "predicted_severity": "warning",
+      "predicted_nodes": [
+        "pe2"
+      ],
+      "confidence_score": 0.82,
+      "root_cause_preview": "BGP session to neighbor 192.168.12.2 (AS65002) on pe2 is Idle with 0 prefixes received, because the underlying interface",
+      "error": null,
+      "elapsed_ms": 9092.3
+    },
+    {
+      "case_id": "bgp-hist-level3-2017",
+      "category": "historical_bgp_anomaly",
+      "passed": true,
+      "score": 1.0,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "bgp_flap",
+          "correct": true,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "major",
+          "correct": true,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe1"
+          ],
+          "actual": [
+            "pe1"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 524,
+            "remediation_steps": 6
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "bgp_flap",
+      "predicted_severity": "major",
+      "predicted_nodes": [
+        "pe1"
+      ],
+      "confidence_score": 0.78,
+      "root_cause_preview": "BGP session to neighbor 192.168.12.2 (AS 65002) on pe1 is down in Idle state with zero messages exchanged, caused by the",
+      "error": null,
+      "elapsed_ms": 10768.8
+    },
+    {
+      "case_id": "bgp-hist-google-japan-2017",
+      "category": "historical_bgp_anomaly",
+      "passed": false,
+      "score": 0.65,
+      "field_scores": [
+        {
+          "field": "event_type",
+          "expected": "bgp_flap",
+          "actual": "route_withdrawal",
+          "correct": false,
+          "weight": 0.25,
+          "detail": ""
+        },
+        {
+          "field": "severity",
+          "expected": "major",
+          "actual": "warning",
+          "correct": false,
+          "weight": 0.1,
+          "detail": ""
+        },
+        {
+          "field": "nodes",
+          "expected": [
+            "pe2"
+          ],
+          "actual": [
+            "pe2"
+          ],
+          "correct": true,
+          "weight": 0.1,
+          "detail": "all expected nodes present"
+        },
+        {
+          "field": "rag_documents",
+          "expected": ">=1",
+          "actual": 5,
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RAG must contribute at least one knowledge chunk"
+        },
+        {
+          "field": "rca_contract",
+          "expected": "root_cause + remediation_steps",
+          "actual": {
+            "root_cause_length": 297,
+            "remediation_steps": 7
+          },
+          "correct": true,
+          "weight": 0.15,
+          "detail": "RCA must contain a concrete cause and remediation"
+        },
+        {
+          "field": "rca_keywords",
+          "expected": [
+            "bgp",
+            "anomaly"
+          ],
+          "actual": [
+            "bgp"
+          ],
+          "correct": true,
+          "weight": 0.15,
+          "detail": "keyword recall 1/2"
+        },
+        {
+          "field": "telemetry_evidence",
+          "expected": "live CLI bundle",
+          "actual": true,
+          "correct": true,
+          "weight": 0.1,
+          "detail": "Telemetry Agent must collect device CLI evidence"
+        }
+      ],
+      "predicted_event_type": "route_withdrawal",
+      "predicted_severity": "warning",
+      "predicted_nodes": [
+        "pe2"
+      ],
+      "confidence_score": 0.82,
+      "root_cause_preview": "eBGP session to neighbor 192.168.12.2 (AS65002) on pe2 is Idle because the underlying interface eth1 (192.168.12.1/30) i",
+      "error": null,
+      "elapsed_ms": 10231.9
+    }
+  ]
+}
